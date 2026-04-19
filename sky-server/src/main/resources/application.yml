@@ -27,7 +27,6 @@ sky:
     user-ttl: 7200000
     user-token-name: authentication
 
-# Knife4j配置
 springdoc:
   api-docs:
     enabled: true
@@ -36,9 +35,10 @@ springdoc:
     enabled: true
     path: /swagger-ui.html
 
-knife4j:
-  enable: true
-  setting:
-    language: zh_cn
-    # 关键配置:禁用Base64编码
-    enableDynamicParameter: false
+
+# Knife4j配置
+#knife4j:
+#  enable: true
+#  setting:
+#    language: zh_cn
+

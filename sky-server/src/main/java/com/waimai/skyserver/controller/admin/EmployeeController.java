@@ -2,6 +2,7 @@ package com.waimai.skyserver.controller.admin;
 
 import com.waimai.skycommon.properties.JwtProperties;
 import com.waimai.skycommon.result.Result;
+import com.waimai.skypojo.dto.EmployeeDTO;
 import com.waimai.skypojo.dto.EmployeeLoginDTO;
 import com.waimai.skypojo.entity.Employee;
 import com.waimai.skyserver.service.EmployeeService;
@@ -40,4 +41,19 @@ public class EmployeeController {
         Employee employee = employeeService.login(employeeLoginDTO);
         return Result.success(employee);
     }
+
+    /**
+     * 新增
+     *
+     * @param employeeDTO
+     * @return
+     */
+    @PostMapping
+    public Result<String> save(@RequestBody EmployeeDTO employeeDTO) {
+        log.info("新增员工，员工数据：{}", employeeDTO);
+        employeeService.save(employeeDTO);
+        return Result.success();
+    }
+
+
 }

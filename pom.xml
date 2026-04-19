@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.2</version>
+        <version>3.5.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.waimai</groupId>
@@ -23,14 +23,15 @@
     <properties>
         <java.version>17</java.version>
 
-        <mybatis.spring>3.0.2</mybatis.spring>
+        <mybatis.spring>3.0.4</mybatis.spring>
         <lombok>1.18.28</lombok>
         <fastjson>1.2.76</fastjson>
         <commons.lang>2.6</commons.lang>
         <druid>1.2.15</druid>
         <pagehelper>1.4.7</pagehelper>
         <aliyun.sdk.oss>3.15.1</aliyun.sdk.oss>
-        <knife4j>4.3.0</knife4j>
+        <knife4j>4.6.0</knife4j>
+        <springdoc>2.8.13</springdoc>
         <aspectj>1.9.19</aspectj>
         <jjwt>0.9.1</jjwt>
         <jaxb-api>2.3.1</jaxb-api>
@@ -72,22 +73,22 @@
             <artifactId>spring-boot-starter-webmvc-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
-            <version>${knife4j}</version>
-        </dependency>
         <!-- jwt依赖 -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
             <version>${jjwt}</version>
         </dependency>
-        <!-- knife4j依赖 -->
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
+        <!-- knife4j -->
+        <!--<dependency>
+            <groupId>com.github.xingfudeshi</groupId>
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
             <version>${knife4j}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc}</version>
         </dependency>
     </dependencies>
     </dependencyManagement>
