@@ -2,6 +2,8 @@ package com.waimai.skypojo.dto;
 
 import lombok.Data;
 
+
+// @ApiModel(description = "员工登录时传递的数据模型")
 @Data
 public class EmployeeLoginDTO {
 

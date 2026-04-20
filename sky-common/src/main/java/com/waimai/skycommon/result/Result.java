@@ -1,6 +1,8 @@
 package com.waimai.skycommon.result;
 
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -9,7 +11,7 @@ import java.io.Serializable;
  * @param <T>
  *
  */
-
+@Data
 public class Result<T> implements Serializable {
 
     private Integer code;//编码：1成功，0和其他数字为失败

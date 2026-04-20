@@ -34,12 +34,14 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler
     public Result<String> exceptionHandler(SQLIntegrityConstraintViolationException ex){
+        //错误信息：Duplicate entry 'zhangsan' for key 'employee.idx_username'
         log.error("异常信息：{}", ex.getMessage());
-        String errorMsg=ex.getMessage();
-        // 判断错误信息
-        if (errorMsg.contains("Duplicate entry")){
-            String[] errorList = errorMsg.split(" ");
-            return Result.error(errorList[2]+ MessageConstant.ACCOUNT_ALREADY_EXIST);
+        String message=ex.getMessage();
+        if (message.contains("Duplicate entry")) {
+            String[] split = ex.getMessage().split(" ");
+            String username = split[2];
+            String msg = MessageConstant.ALREADY_EXISTS + username;
+            return Result.error(msg);
         }else {
             return Result.error(MessageConstant.UNKNOWN_ERROR);
         }

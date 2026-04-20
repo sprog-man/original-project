@@ -33,9 +33,10 @@
         <knife4j>4.6.0</knife4j>
         <springdoc>2.8.13</springdoc>
         <aspectj>1.9.19</aspectj>
-        <jjwt>0.9.1</jjwt>
+        <jjwt>0.12.5</jjwt>
         <jaxb-api>2.3.1</jaxb-api>
         <poi>5.2.2</poi>
+
     </properties>
 
     <!-- 统一管理依赖版本 -->
@@ -76,19 +77,37 @@
         <!-- jwt依赖 -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
+            <artifactId>jjwt-api</artifactId>
             <version>${jjwt}</version>
         </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jjwt}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jjwt}</version>
+            <scope>runtime</scope>
+        </dependency>
         <!-- knife4j -->
-        <!--<dependency>
+        <dependency>
             <groupId>com.github.xingfudeshi</groupId>
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
             <version>${knife4j}</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>${springdoc}</version>
+        </dependency>
+        <!-- 分页查询插件依赖 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>${pagehelper}</version>
         </dependency>
     </dependencies>
     </dependencyManagement>

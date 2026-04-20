@@ -3,9 +3,10 @@ package com.waimai.skypojo.dto;
 import lombok.Data;
 
 @Data
+// @ApiModel(description = "新增员工时所需传入的数据请求")
 public class EmployeeDTO {
 
-    private Long id;
+    private long id;
 
     private String username;
 

@@ -1,6 +1,7 @@
 package com.waimai.skyserver.config;
 
 import com.waimai.skycommon.json.JacksonObjectMapper;
+import com.waimai.skycommon.properties.JwtProperties;
 import com.waimai.skyserver.interceptor.JwtTokenAdminInterceptor;
 import com.waimai.skyserver.interceptor.JwtTokenUserInterceptor;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -32,6 +33,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Autowired
     private JwtTokenUserInterceptor jwtTokenUserInterceptor;
+
+
 
     /**
      * 注册自定义拦截器
@@ -81,7 +84,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         log.info("开始进行静态资源映射...");
 //        registry.addResourceHandler("/doc.html").addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/webjars/swagger-ui/5.28.1/");
 //        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
@@ -105,7 +107,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     }*/
 
     /**
-     * 添加自定义消息转换器(处理Java 8时间类型序列化)
+     * 添加自定义消息转换器(处理Java 8时间类型序列化以及)
      *
      * @param converters
      */
@@ -115,6 +117,9 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
         List<MediaType> supportMediaTypeList = new ArrayList<>();
         supportMediaTypeList.add(MediaType.APPLICATION_JSON);
+
+        // 设置自定义的ObjectMapper
+        converter.setObjectMapper(new JacksonObjectMapper());
 
         converter.setSupportedMediaTypes(supportMediaTypeList);
         converter.setDefaultCharset(StandardCharsets.UTF_8);

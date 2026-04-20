@@ -14,17 +14,25 @@ spring:
     username: root
     password: 123456
 
+
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.sky.entity
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
 sky:
   jwt:
     # 设置jwt签名加密时使用的秘钥
-    admin-secret-key: itcast
+    admin-secret-key: itcast-admin-secret-key-2026-safe!
     # 设置jwt过期时间
-    admin-ttl: 7200000
+    admin-ttl: 86400000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
     # 小程序的jwt配置
-    user-secret-key: itcast
-    user-ttl: 7200000
+    user-secret-key: itcast-user-secret-key-2026-safe!
+    user-ttl: 86400000
     user-token-name: authentication
 
 springdoc:
@@ -36,9 +44,16 @@ springdoc:
     path: /swagger-ui.html
 
 
-# Knife4j配置
-#knife4j:
-#  enable: true
-#  setting:
-#    language: zh_cn
+ #Knife4j配置
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+  page-size-zero: true
 

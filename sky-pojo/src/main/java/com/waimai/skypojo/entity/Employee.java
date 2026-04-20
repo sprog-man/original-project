@@ -26,6 +26,7 @@ public class Employee {
 
     private String phone;
 
+    //1：男，0：女
     private String sex;
 
     private String idNumber;
