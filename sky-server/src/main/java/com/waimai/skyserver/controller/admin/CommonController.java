@@ -20,7 +20,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/admin/common")
-@Tag(name = "CommonController",description = "通用接口")
+@Tag(name = "上传图片通用接口CommonController",description = "通用接口")
 @Slf4j
 public class CommonController {
 

@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController("adminDishController")
 @RequestMapping("/admin/dish")
-@Tag(name = "DishController",description = "菜品管理")
+@Tag(name = "管理员菜品管理",description = "菜品管理")
 @Slf4j
 public class DishController {
 

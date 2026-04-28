@@ -75,7 +75,7 @@ public interface DishMapper {
 
 
     /**
-     * 根据分类id获取菜品
+     * 根据分类id获取菜品(不是套餐)
      *
      * @param dish
      * @return

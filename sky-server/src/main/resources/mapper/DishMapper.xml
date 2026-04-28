@@ -5,7 +5,7 @@
     <!-- useGeneratedKeys获取insert语句生成的主键值，keyProperty="id"，将id的值赋值回给Dish对象里的id属性 -->
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         insert into dish (name, category_id, price, image, description, create_time, update_time, create_user, update_user,status)
-        values (#{name}, #{categoryId}, #{price}, #{image},,#{description}, #{createTime}, #{updateTime}, #{createUser}, #{updateUser},#{status})
+        values (#{name}, #{categoryId}, #{price}, #{image},#{description}, #{createTime}, #{updateTime}, #{createUser}, #{updateUser},#{status})
     </insert>
 
     <!-- 根据分类id查询菜品数量 -->
@@ -26,7 +26,7 @@
     </select>
 
     <!-- 根据id批量删除菜品 -->
-    <delete id="deleteBatch">
+    <delete id="deleteByIds">
         delete from dish where id in
         <foreach collection="ids" item="id" open="(" close=")" separator=",">
             #{id}
@@ -58,4 +58,9 @@
         </set>
         where id = #{id}
     </update>
+
+    <!-- 根据分类id查询菜品数据 -->
+    <select id="list" resultType="com.waimai.skypojo.entity.Dish">
+        select * from dish where status = 1 and category_id = #{categoryId}
+    </select>
 </mapper>

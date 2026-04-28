@@ -17,6 +17,7 @@ import com.waimai.skyserver.mapper.DishMapper;
 import com.waimai.skyserver.mapper.SetmealDishMapper;
 import com.waimai.skyserver.mapper.SetmealMapper;
 import com.waimai.skyserver.service.SetmealService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
+@Slf4j
 public class SetmealServiceImpl implements SetmealService {
 
     @Autowired
@@ -172,7 +174,11 @@ public class SetmealServiceImpl implements SetmealService {
      * @return
      */
     public List<DishItemVO> getSetmealDishItemById(Long id){
-        return setmealMapper.getSetmealDishItemById(id);
+
+        log.info("查询套餐菜品详情，套餐ID: {}", id);
+        List<DishItemVO> list = setmealMapper.getSetmealDishItemById(id);
+        log.info("查询结果数量: {}, 数据: {}", list.size(), list);
+        return list;
     }
 
 

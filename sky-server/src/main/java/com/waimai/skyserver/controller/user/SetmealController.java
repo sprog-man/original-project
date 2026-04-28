@@ -42,6 +42,7 @@ public class SetmealController {
                 .build();
         log.info("根据分类id查询套餐：{}", categoryId);
         List<Setmeal> list = setmealService.list(setmeal);
+        log.info("查询结果数量：{}, 数据：{}", list.size(), list);
         return Result.success(list);
     }
 
@@ -51,7 +52,7 @@ public class SetmealController {
      * @param id
      * @return
      */
-    @GetMapping("/dish{id}")
+    @GetMapping("/dish/{id}")
     @Operation(summary = "查询套餐包含的菜品列表")
     public Result<List<DishItemVO>> dishList(@PathVariable Long id) {
         log.info("查询套餐包含的菜品列表：{}", id);
