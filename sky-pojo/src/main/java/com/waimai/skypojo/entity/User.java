@@ -1,6 +1,5 @@
 package com.waimai.skypojo.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,39 +8,36 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 /**
- * 员工
+ * 用户
  */
+
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class Employee {
-
+@NoArgsConstructor
+public class User {
     private static final long serialVersionUID = 1L;
 
     private Long id;
 
-    private String username;
+    //微信用户唯一标识
+    private String openid;
 
+    //微信昵称
     private String name;
 
-    private String password;
-
+    //手机号
     private String phone;
 
-    //1：男，0：女
+    //性别 1男性，2女性，0未知
     private String sex;
 
+    //
     private String idNumber;
 
-    private Integer status;
+    //头像
+    private String avatar;
 
-    // @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") // 会导致前端接收到的时间格式不对
+    //注册时间
     private LocalDateTime createTime;
-
-    private LocalDateTime updateTime;
-
-    private Long createUser;
-
-    private Long updateUser;
 }

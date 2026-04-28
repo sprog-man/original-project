@@ -9,16 +9,28 @@ spring:
   main:
     allow-circular-references: true
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver # 驱动名称
-    url: jdbc:mysql://localhost:3306/sky_take_out
-    username: root
-    password: 123456
+    driver-class-name: ${sky.datasource.driver-class-name} # 驱动名称
+    url: ${sky.datasource.url}
+    username: ${sky.datasource.username}
+    password: ${sky.datasource.password}
+  data:
+    redis:
+      host: ${sky.data.redis.host}
+      port: ${sky.data.redis.port}
+      password: ${sky.data.redis.password}
+      database: ${sky.data.redis.database}
+  wechat:
+    app-id: ${sky.wechat.appid}
+    app-secret: ${sky.wechat.appsecret}
+
+
+
 
 
 mybatis:
   #mapper配置文件
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.sky.entity
+  type-aliases-package: com.waimai.skypojo.entity
   configuration:
     #开启驼峰命名
     map-underscore-to-camel-case: true
@@ -57,3 +69,11 @@ pagehelper:
   params: count=countSql
   page-size-zero: true
 
+
+#aliyunOss配置
+aliyun:
+    oss:
+        endpoint: ${sky.aliyun.oss.endpoint}
+        access-key-id: ${sky.aliyun.oss.access-key-id}
+        access-key-secret: ${sky.aliyun.oss.access-key-secret}
+        bucket-name: ${sky.aliyun.oss.bucket-name}

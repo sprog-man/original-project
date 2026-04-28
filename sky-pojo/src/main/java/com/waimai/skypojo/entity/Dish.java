@@ -1,42 +1,45 @@
 package com.waimai.skypojo.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * 员工
+ * 菜品
  */
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employee {
+@Builder
+public class Dish implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Long id;
 
-    private String username;
-
+    //菜品名称
     private String name;
 
-    private String password;
+    //菜品分类id
+    private Long categoryId;
 
-    private String phone;
+    //菜品价格
+    private BigDecimal price;
 
-    //1：男，0：女
-    private String sex;
+    //图片
+    private String image;
 
-    private String idNumber;
+    //描述信息
+    private String description;
 
+    //0 停售 1 起售
     private Integer status;
 
-    // @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") // 会导致前端接收到的时间格式不对
     private LocalDateTime createTime;
 
     private LocalDateTime updateTime;
@@ -44,4 +47,5 @@ public class Employee {
     private Long createUser;
 
     private Long updateUser;
+
 }

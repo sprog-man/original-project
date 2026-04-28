@@ -1,8 +1,10 @@
 package com.waimai.skyserver.mapper;
 
 import com.github.pagehelper.Page;
+import com.waimai.skycommon.enumeration.OperationType;
 import com.waimai.skypojo.dto.EmployeePageQueryDTO;
 import com.waimai.skypojo.entity.Employee;
+import com.waimai.skyserver.annotation.AutoFill;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -29,6 +31,7 @@ public interface EmployeeMapper {
             " (username,password, name, phone, sex, id_number, status, create_time, update_time, create_user, update_user)"
             +
             "values (#{username},#{password}, #{name}, #{phone}, #{sex}, #{idNumber}, #{status}, #{createTime}, #{updateTime}, #{createUser}, #{updateUser})")
+    @AutoFill(value = OperationType.INSERT)
     void insert(Employee employee);
 
     /**
@@ -46,7 +49,7 @@ public interface EmployeeMapper {
      * @param employee
      * 配置了xml，这个可以配置全部字段进行修改，这样以后需要修改的字段，就不用再写sql了
      */
-
+    @AutoFill(value = OperationType.UPDATE)
     void update(Employee employee);
 
     /**
