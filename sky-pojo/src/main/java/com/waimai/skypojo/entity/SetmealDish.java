@@ -20,7 +20,7 @@ public class SetmealDish implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    //套餐与菜品关系id
+    //数据列表id
     private Long id;
 
     //套餐id

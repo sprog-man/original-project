@@ -55,6 +55,7 @@ public interface DishService {
      *
      * @param dish
      * @return
+     * 配置xml
      */
     List<DishVO> listWithFlavor(Dish dish);
 

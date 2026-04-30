@@ -5,11 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class DishItemVO {
+public class DishItemVO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     // 菜品名称
     private String name;

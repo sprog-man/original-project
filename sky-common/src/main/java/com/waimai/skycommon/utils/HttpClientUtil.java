@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * HttpClient工具类
+ * HttpClient工具类 用于发送请求到微信服务器，获取用户的openid
  */
 
 public class HttpClientUtil {

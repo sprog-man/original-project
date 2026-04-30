@@ -12,9 +12,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController("adminDishController")
 @RequestMapping("/admin/dish")
@@ -24,6 +26,9 @@ public class DishController {
 
     @Autowired
     private DishService dishService;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     /**
      * 新增菜品和对应口味
@@ -37,6 +42,10 @@ public class DishController {
         log.info("新增菜品：{}", dishDTO);
         dishService.saveWithFlavor(dishDTO);
 
+        //清理缓存数据
+        //只需要精确清理某个分类下的缓存数据
+        String key = "dish_" + dishDTO.getCategoryId();
+        cleanCache( key);
         return Result.success();
     }
 
@@ -66,6 +75,11 @@ public class DishController {
     public Result delete(@RequestParam List<Long> ids){
         log.info("批量删除菜品：{}", ids);
         dishService.deleteBatch(ids);
+
+        //删除可能涉及多个菜品分类的缓存数据
+        //一步到位，将所有的菜品缓存数据清理掉，所有以dish_ 开头的key
+        //delete支持传入collection集合，删除的时候不支持通配符操作，所以传入集合
+        cleanCache("dish_*");
         return Result.success();
     }
 
@@ -94,7 +108,21 @@ public class DishController {
     public Result update(@RequestBody DishDTO dishDTO){
         log.info("修改菜品：{}", dishDTO);
         dishService.updateWithFlavor(dishDTO);
+
+        //简化操作，直接删除所有菜品的缓存数据
+        cleanCache( "dish_*");
         return Result.success();
+    }
+
+
+    /**
+     * 清楚缓存数据
+     *
+     * @param pattern
+     */
+    public void cleanCache(String pattern){
+        Set keys = redisTemplate.keys(pattern);
+        redisTemplate.delete(keys);
     }
 
 }
