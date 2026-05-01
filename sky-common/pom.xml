@@ -68,6 +68,18 @@
             <artifactId>aliyun-sdk-oss</artifactId>
         </dependency>
 
+        <!--微信支付-->
+        <dependency>
+            <groupId>com.github.wechatpay-apiv3</groupId>
+            <artifactId>wechatpay-apache-httpclient</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+
 
     </dependencies>
 

@@ -143,6 +143,26 @@
             <artifactId>fastjson</artifactId>
             <version>${fastjson}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid}</version>
+        </dependency>
+
+        <!--微信支付-->
+        <dependency>
+            <groupId>com.github.wechatpay-apiv3</groupId>
+            <artifactId>wechatpay-apache-httpclient</artifactId>
+            <version>0.4.9</version>
+        </dependency>
+
+        <!-- websocket导入 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+            <version>3.1.2</version>
+        </dependency>
     </dependencies>
     </dependencyManagement>
 

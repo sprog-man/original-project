@@ -9,6 +9,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement // 开启事务
 @EnableCaching //开启缓存注解功能
 @MapperScan({"com.waimai.skyserver.mapper"})
+@EnableScheduling // 开启定时任务功能
 public class SkyServerApplication {
 
     public static void main(String[] args) {
